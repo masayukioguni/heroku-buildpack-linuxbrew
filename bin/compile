@@ -8,11 +8,13 @@ echo "-----> Installing linuxbrew"
 BUILD_DIR=$1
 VENDOR_DIR="vendor"
 
+echo "-----> git clone --depth 1 https://github.com/Homebrew/brew.git start"
 git clone --depth 1 "https://github.com/Homebrew/brew.git" \
   "$HOME/.linuxbrew" 2>&1 | indent
 if [ $? -ne 0 ]; then
   exit 1
 fi
+echo "-----> git clone --depth 1 https://github.com/Homebrew/brew.git end"
 
 PROFILE_PATH="$BUILD_DIR/.profile.d/linuxbrew.sh"
 mkdir -p $(dirname $PROFILE_PATH)
@@ -37,6 +39,7 @@ do
     rm "$HOME/$VENDOR_DIR/linuxbrew"
     exit 1
   fi
+  df
   echo "-----> cleanup $formula using brew"
   brew cleanup
 done
