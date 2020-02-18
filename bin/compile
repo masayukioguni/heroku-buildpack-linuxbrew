@@ -43,6 +43,10 @@ do
   echo "-----> cleanup $formula using brew"
   brew cleanup
 done
+du -sh /app/.linuxbrew/Library/Taps/homebrew/homebrew-core/
+# rm -rf /app/.linuxbrew/Library/Taps/homebrew/homebrew-core/.git
+# du -sh /app/.linuxbrew/Library/Taps/homebrew/homebrew-core/
+
 df
 
 # save '.linuxbrew'
