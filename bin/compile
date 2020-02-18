@@ -27,6 +27,8 @@ _EOT_
 cat $PROFILE_PATH | indent
 
 # install
+df
+
 for formula in $(cat "$BUILD_DIR/.cellar")
 do
   echo "-----> Installing $formula using brew"
@@ -35,7 +37,10 @@ do
     rm "$HOME/$VENDOR_DIR/linuxbrew"
     exit 1
   fi
+  echo "-----> cleanup $formula using brew"
+  brew cleanup
 done
+df
 
 # save '.linuxbrew'
 (cd $HOME && tar cf - .linuxbrew) | (cd $BUILD_DIR && tar xf -)
