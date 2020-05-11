@@ -30,7 +30,7 @@ cat $PROFILE_PATH | indent
 for formula in $(cat "$BUILD_DIR/.cellar")
 do
   echo "-----> Installing $formula using brew"
-  brew install --HEAD $formula | indent
+  brew install $formula | indent
   if [ $? -ne 0 ]; then
     rm "$HOME/$VENDOR_DIR/linuxbrew"
     exit 1
